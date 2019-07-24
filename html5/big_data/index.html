@@ -34,5 +34,36 @@
         <div class="news-item"></div>
     </div>
     <div class="news-footer"></div>
+    <script>
+        // - 大数据 js 分页
+        const originNews = Array.from(
+            { 
+                length: 10000
+            },
+            (v, k) => ({
+                content: `新闻${k}`
+            })
+        )
+        // 分割
+        // console.log(originNews);
+        // page limit 函数去做
+        // 箭头函数
+        const chunk = (arr, size) => 
+            Array.from(
+                {
+                    length: Math.ceil(arr.length / size)
+                },
+                (v, i) => ({
+                    // 切割数组
+                    
+                })
+            )
+        // {
+        //     return [];
+        // }
+        function pageLimit () {
+
+        }
+    </script>
 </body>
 </html>
