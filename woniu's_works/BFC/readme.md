@@ -13,4 +13,3 @@ Block Formatting Context(块级格式化上下文)
 3. 行内块inline-block
 4. 表格单元display: table-cell
 5. 绝对定位（absolute, fixed）
-6. 
