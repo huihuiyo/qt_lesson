@@ -63,8 +63,12 @@
         clearInterval(headWaveTimer)
         jsStartBtn.style.display = 'none' // 隐藏按钮
         bird.showBird(jsWrapBg) // 插入小鸟到页面中
-        // bird.flyBird() // 控制小鸟飞翔下落
-        // bird.wingWave() // 逐帧动画，小鸟煽动翅膀
+        bird.flyBird() // 控制小鸟飞翔下落
+        bird.wingWave() // 逐帧动画，小鸟煽动翅膀
+        jsWrapBg.onclick = function () {
+            bird.fallSpeed = -8
+            
+        }
     }
     </script>
 </body>
