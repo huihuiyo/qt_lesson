@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body, html {
+    width: 100%;
+    height: 100%;
+}
+.container .cat{
+    width: 200px;
+    height: 200px;
+    background-image: linear-gradient(To bottom,pink, blueviolet 40%, blue 95%, rgba(10, 40, 173, 0.918));
+    position: absolute;
+    top: 25%;
+    left: 25%;
+}
+.catBody {
+    width: 100px;
+    height: 130px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* border: 1px solid #000; */
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maoshenti.ad6177be5deba54a83a99ef58fe80047.png) no-repeat;
+    background-size: 75%;
+}
+.tail {
+    width: 120px;
+    height: 185px;
+    /* border: 1px solid #000; */
+    position: absolute;
+    left: 15%;
+    top: -50%;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maowei.cebc9c6d99173d07009465c700b0eb21.png) no-repeat;
+    background-size: 40%;
+    transform-origin: bottom;
+    animation: catTail 5s linear infinite;
+}
+@keyframes catTail {
+    0% {
+        transform: rotate(0)
+    }
+    25% {
+        transform: rotate(5deg)
+    }
+    50% {
+        transform: rotate(0)
+    }
+    75% {
+        transform: rotate(-5deg)
+    }
+    100% {
+        transform: rotate(0)
+    }
+}
+.clap {
+    width: 120px;
+    height: 185px;
+    position: absolute;
+    left: 52%;
+    top: 80%;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maozhua.35cbb00fc5856cf230d6a4e60cfdfc55.png) no-repeat;
+    background-size: 18%;
+    transform-origin: top;
+    animation: catClap 4s linear infinite;
+}
+@keyframes catClap {
+    0% {
+        transform: rotate(0)
+    }
+    25% {
+        transform: rotate(3deg)
+    }
+    50% {
+        transform: rotate(0)
+    }
+    75% {
+        transform: rotate(-5deg)
+    }
+    100% {
+        transform: rotate(0)
+    }
+}

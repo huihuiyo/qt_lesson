@@ -20,8 +20,10 @@
         <div id="grassLand1"></div>
         <!-- 草地2 -->
         <div id="grassLand2"></div>
+
     </div>
     <script src="./js/bird.js"></script>
+    <script src="./js/mod.js"></script>
     <script>
     var jsWrapBg = document.getElementById('wrapbg')
     var jsHeadTitle = document.getElementById('headTitle')
@@ -63,12 +65,17 @@
         clearInterval(headWaveTimer)
         jsStartBtn.style.display = 'none' // 隐藏按钮
         bird.showBird(jsWrapBg) // 插入小鸟到页面中
+        mod.showMod(jsWrapBg)
         bird.flyBird() // 控制小鸟飞翔下落
         bird.wingWave() // 逐帧动画，小鸟煽动翅膀
         jsWrapBg.onclick = function () {
-            bird.fallSpeed = -8
-            
+            if(bird.div.offsetTop < 0) { // 判断后，不能从上面飞出界
+                bird.fallSpeed = 2
+            } else {
+                bird.fallSpeed = -8
+            }
         }
+
     }
     </script>
 </body>

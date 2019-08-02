@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: lightgreen;
+}
+.paras {
+    position: absolute;
+    line-height: 1.6667;
+    letter-spacing: 1px;
+    color: #333;
+    left: 25%;
+    top: 50%;
+    animation: wordLineUp 2s linear forwards;
+}
+@keyframes wordLineUp{
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
