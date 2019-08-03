@@ -22,14 +22,17 @@
         <div id="grassLand2"></div>
 
     </div>
+    <script src="./js/baseObj.js"></script>
     <script src="./js/bird.js"></script>
-    <script src="./js/mod.js"></script>
+    <script src="./js/block.js"></script>
     <script>
     var jsWrapBg = document.getElementById('wrapbg')
     var jsHeadTitle = document.getElementById('headTitle')
     var jsGrassLand1 = document.getElementById('grassLand1')
     var jsGrassLand2 = document.getElementById('grassLand2')
     var jsHeadBird = document.getElementById('headBird')
+    var blocksArr = [] // 用来存储block的数据
+    var blockDistance = baseObj.randomNum(120, 350)
 
     // 让草地动起来
     var landTimer = setInterval(landRun, 30)
@@ -42,6 +45,27 @@
         }
         jsGrassLand1.style.left = jsGrassLand1.offsetLeft - 3 + 'px';
         jsGrassLand2.style.left = jsGrassLand2.offsetLeft - 3 + 'px';
+
+        if (blocksArr.length) {
+            for (var i = 0; i < blocksArr.length; i++) {
+                blocksArr[i].moveBlock()
+                var x = baseObj.rectangleCrashExamine(blocksArr[i].downDivWrap, bird.div)
+                var y = baseObj.rectangleCrashExamine(blocksArr[i].upDivWrap, bird.div)
+                var z = bird.div.offsetTop >= 390
+                if (x || y || z) {
+                    window.clearInterval(landTimer)
+                    bird.fallSpeed = 0
+                    jsWrapBg.onclick = null
+                }
+            }
+            
+            if (blocksArr[blocksArr.length - 1].downDivWrap.offsetLeft < (450 - blockDistance)) {
+                blockDistance = baseObj.randomNum(130, 250)
+                var newBlock = new Block()
+                newBlock.createBlock(jsWrapBg)
+                blocksArr.push(newBlock)
+            }
+        }
     }
     
     // 让标题动
@@ -65,7 +89,6 @@
         clearInterval(headWaveTimer)
         jsStartBtn.style.display = 'none' // 隐藏按钮
         bird.showBird(jsWrapBg) // 插入小鸟到页面中
-        mod.showMod(jsWrapBg)
         bird.flyBird() // 控制小鸟飞翔下落
         bird.wingWave() // 逐帧动画，小鸟煽动翅膀
         jsWrapBg.onclick = function () {
@@ -75,7 +98,10 @@
                 bird.fallSpeed = -8
             }
         }
-
+        // 开始出现管道
+        var b = new Block()
+        b.createBlock(jsWrapBg)
+        blocksArr.push(b)
     }
     </script>
 </body>

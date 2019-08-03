@@ -27,9 +27,10 @@ var bird = {
                 bird.fallSpeed = 0
                 clearInterval(bird.flyTimer) // 一旦飞到地面，清除定时器
                 clearInterval(bird.wingTimer)
+                
             }
-            if (bird.fallSpeed > 12) {
-                bird.fallSpeed = 12; // 控制小鸟下落的速度最大不能超过12
+            if (bird.fallSpeed > 20) {
+                bird.fallSpeed = 20; // 控制小鸟下落的速度最大不能超过12
             }
         }
     },
