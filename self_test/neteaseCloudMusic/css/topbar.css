@@ -1,210 +1,158 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol,
-ul,
-li {
-  list-style: none;
-}
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
 a {
-  text-decoration: none;
-  color: #fff;
-  cursor: pointer;
+	text-decoration: none;
+	color: #fff;
+	cursor: pointer;
 }
+ul {
+	margin: 0px;
+	padding-left: 0px; 
+}
+li {
+	list-style: none;
+}
+
+em {
+	font-family: "Microsoft YaHei", Verdana, Geneva, sans-serif;
+	font-style: normal;
+}
+
+/* 图片 */
+
+.topbar-main .logo, .topbar-main-nav .show .cor, .topbar-main-nav .lst .hot, 
+.topbar-login-list {
+	background-image: url("../images/topbar.png");
+}
+
 /* 业务代码 */
-.topbar-main .logo,
-.topbar-main-nav .show .cor {
-  background-image: url("../images/topbar.png");
-}
+
 .topbar {
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
+	width: 100%;
+	position: relative;
+	left: 0;
+	top: 0;
 }
+
 .topbar .topbar-main {
-  height: 70px;
-  position: relative;
-  background-color: #242424;
-  border-bottom: 1px solid #000;
-  box-sizing: border-box;
+	position: relative;
+	height: 70px;
+	background-color: #242424;
+	border-bottom: 1px solid #000;
+	box-sizing: border-box;
 }
-.topbar .topbar-main .topbar-wrap {
-  width: 1100px;
-  height: 70px;
-  margin: 0 auto;
+
+.topbar-main .topbar-wrap {
+	width: 1100px;
+	height: 70px;
+	margin: 0 auto;
 }
-.topbar .topbar-main .topbar-wrap .logo {
-  float: left;
-  width: 176px;
-  height: 69px;
-  background-position: 0 0;
+
+.topbar-wrap .logo {
+	float: left;
+	margin: 0px; 
+	width: 176px;
+	height: 69px;
+	background-position: 0 0;
 }
-.topbar .topbar-main .topbar-wrap .logo a {
-  width: 157px;
-  height: 100%;
-  padding-right: 20px;
-  float: left;
-  text-indent: -9999px;
+
+.topbar-wrap .logo a {
+	width: 157px;
+	height: 100%;
+	padding-right: 20px;
+	float: left;
+	text-indent: -9999px;
 }
-.topbar .topbar-main .topbar-wrap .topbar-main-nav {
-  float: left;
+
+.topbar-wrap .topbar-main-nav {
+	float: left;
 }
-.topbar .topbar-main .topbar-wrap .topbar-main-nav li {
-  float: left;
-  height: 70px;
-  font-size: 14px;
+
+.topbar-wrap .topbar-main-nav li {
+	float: left;
+	height: 70px;
+	font-size: 14px;
 }
-.topbar .topbar-main .topbar-wrap .topbar-main-nav li span,
-.topbar .topbar-main .topbar-wrap .topbar-main-nav li a {
-  position: relative;
-  float: left;
-  height: 70px;
-  text-align: center;
-  font-size: 14px;
-  line-height: 70px;
+
+.topbar-wrap .topbar-main-nav li span, 
+.topbar-wrap .topbar-main-nav li a {
+	position: relative;
+	float: left;
+	height: 70px;
+	text-align: center;
+	font-size: 14px;
+	line-height: 70px;
 }
-.topbar .topbar-main .topbar-wrap .topbar-main-nav li a {
-  color: #ccc;
-  padding: 0 19px;
+
+.topbar-wrap .topbar-main-nav li a {
+	color: #ccc;
+	padding: 0 19px;
 }
-.topbar .topbar-main .topbar-wrap .topbar-main-nav li a:hover {
-  background-color: #000;
-  color: #fff;
+.topbar-wrap .topbar-main-nav li a:hover, .topbar-wrap .topbar-main-nav li .show{
+	background-color: #000;
+	color: #fff;
 }
-.topbar .topbar-main .topbar-wrap .topbar-main-nav li .cor {
-  display: block;
-  width: 12px;
-  height: 7px;
-  position: absolute;
-  left: 50%;
-  top: 64px;
-  margin-left: -6px;
-  overflow: hidden;
-  background-position: -226px 0;
+.topbar-main-nav em {
+	float: left;
+	font-size: 14px;
+	height: 70px;
 }
-.topbar .topbar-main .topbar-wrap .topbar-main-nav li .show {
-  background-color: #000;
-  color: #fff;
+.topbar-main-nav .cor {
+	display: none;
+}
+.topbar-main-nav li .show .cor {
+	display: block;
+	width: 12px;
+	height: 7px;
+	position: absolute;
+	left: 50%;
+	top: 64px;
+	margin-left: -6px;
+	overflow: hidden;
+	background-position: -226px 0;
+}
+.topbar-main-nav li.lst .hot {
+	display: block;
+	top: 21px;
+	left: 100px;
+	width: 28px;
+	height: 19px;
+	background-position: -190px 0;
+}
+.topbar-login-list {
+	float: right;
+	height: 45px;
+	margin: 19px 0 0 20px;
+	padding: 0 20px 0 0;
+	background-position: right -47px;
+}
+.topbar-login-list .link {
+	display: block;
+	width: 28px;
+	margin-top: 7px;
+	color: #787878;
+	font-size: 12px;
+}
+.topbar-login-list:hover .link {
+	color: #666;
+}
+.topbar-login-list .link:hover {
+	text-decoration: underline;
+}
+.topbar-login-list .innerList {
+	position: absolute;
+	top: 38px;
+	right: -43px;
+	width: 158px;
+	background-color: #2b2b2b;
+	border: 1px solid #202020;
+	box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.5);
+	border-radius: 4px;
+}
+.topbar-login-list:hover .innerList {
+	display: block;
+}
+.topbar-login-list .innerList li, .topbar-login-list .innerList li a {
+	float: left;
+	box-sizing: border-box;
+	width: 100%;
+	
 }

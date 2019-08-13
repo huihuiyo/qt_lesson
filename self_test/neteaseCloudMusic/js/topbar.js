@@ -1,10 +1,12 @@
-const ulParent = document.querySelector('.topbar-main-nav');
-ulParent.addEventListener('click', function (event) {
-	// console.log(event.target.tagName);
-	for (let i = 0; i < ulParent.children.length; i++) {
-		if (ulParent.children[i].classList.contains('show')) {
-			ulParent.children[i].classList.remove('show');
+// 冒泡点击事件
+const ulElement = document.querySelector('.topbar-main-nav');
+ulElement.addEventListener('click', function (event) {
+	for (let i = 0; i < ulElement.children.length; i++) {
+		const aElement = ulElement.children[i].children[0].children[0];
+		if (aElement.classList.contains('show')) {
+			aElement.classList.remove('show');
 		}
 	}
-	event.target.tagName=='EM'||'EM' ? event.target.parentNode.classList.add('show'):event.target.classList.add('show');
-})
+	// 三元运算符 判断当前被点击的元素 用于导向li 并给其加上 .show
+	event.target.tagName == 'EM' || event.target.tagName == 'SUB' ? event.target.parentNode.classList.add('show') : event.target.classList.add('show');
+}, true)
