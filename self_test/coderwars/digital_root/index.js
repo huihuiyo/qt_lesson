@@ -24,6 +24,4 @@ function digital_root(n) {
 	}, 0));
 }
 
-	
-
 console.log(digital_root(888))
