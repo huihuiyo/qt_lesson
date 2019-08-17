@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let xq = function () {
+			return new Promise((resolve, reject) => {
+				setTimeout(() => {
+					console.log("meet");
+					resolve('meet goes well');
+				}, 1000)
+			})
+		}
+
+		function marry () {
+			return new Promise((resolve, reject) => {
+				setTimeout(() => {
+					console.log('marry');
+					resolve('marry goes well');
+				}, 500)
+			})
+			
+		}
+		
+		function sw () {
+			console.log('be a father');
+		}
+		xq().then((e) => {
+			console.log(e);
+			marry().then(sw);
+		});
+	</script>
+</body>
+</html>
