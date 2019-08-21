@@ -17,6 +17,8 @@
 			group,
 			renderer;
 		var mouseX = 0, mouseY = 0;
+		var windowHalfX = window.innerWidth / 2;
+		var windowHalfY = window.innerHeight / 2;
 		init();
 		animate();
 		function init () {
@@ -26,7 +28,7 @@
 			// 3D世界是 Camera 拍出来的
 			camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 2000);
 			// 正前方
-			camera.position.z = 550;
+			camera.position.z = 500;
 			
 			// 场景
 			scene = new THREE.Scene();
@@ -53,15 +55,23 @@
 				antialias: true,   // 抗锯齿
 			});
 			renderer.setSize(window.innerWidth, window.innerHeight);
-
-
+			document.addEventListener('mousemove', onDocumentMouseMove, false);
+		}
+		function onDocumentMouseMove(event) {
+			mouseX = event.clientX - windowHalfX;
+			mouseY = event.clientY - windowHalfY;
 		}
 		function animate () {
 			// 每秒60帧
+			// camera 拍   scene 场景   renderer 渲染
+			// setInterval() 不精确
 			requestAnimationFrame(animate);
 			render();
 		}
 		function render() {
+			// 地球转一下
+			camera.position.x += (mouseX - camera.position.x) * 0.05;
+			camera.position.y += (mouseY - camera.position.y) * 0.05;
 			camera.lookAt(scene.position);
 			renderer.render(scene, camera);
 		}
