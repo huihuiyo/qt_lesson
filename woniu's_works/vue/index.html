@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<title>Document</title>
+	<style>
+	.good {
+		color: red;
+	}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- 取数据 -->
+		<!-- {{message}} -->
+
+		<!-- 绑定添加class -->
+		<!-- <p class="cool" v-bind:class="isGood ? 'good' : ''" v-on:click="goodMan">嘀嘀嘀</p> -->
+		<!-- <p class="cool" :class="[activeClass]">嘀嘀嘀</p> -->
+		
+		<!-- 循环遍历 -->
+		<!-- <ul>
+			<li v-for="todo in todos">{{todo.text}}</li>
+		</ul> -->
+
+		<!-- 双向绑定 definedProperty -->
+		<!-- <input type="text" v-model="content">
+		<p>{{content}}</p> -->
+		
+		<!-- @ 是 v-on: 的缩写  -->
+		<!-- <p class="cool" @click="reverse">{{msg}}</p> -->
+	</div>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'hello',
+				msg: '123',
+				isGood: false,
+				activeClass: 'active',
+				todos: [
+					{text: 'hello html'},
+					{text: 'hello css'},
+					{text: 'hello js'}
+				],
+				content: ''
+			},
+			methods: {
+				goodMan() {
+					this.isGood = !this.isGood;
+				},
+				reverse() {
+					this.msg = this.msg.split('').reverse().join('');
+				}
+			}
+		})
+		
+	</script>
+</body>
+</html>
