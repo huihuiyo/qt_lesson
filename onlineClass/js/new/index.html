@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Foo(e) {
+			this.name = "wt";
+			this.age = e;
+			return {};
+		}
+		function objectFactory() {
+			const obj = {}; // 1
+
+			// const [Constructor, ...args] = [...arguments];
+			const Constructor = [].shift.call(arguments); // 3
+			
+			// 原型连接
+			obj._proto_ = Constructor.prototype; // 5
+			const ret = Constructor.apply(obj, arguments); // 4
+			
+			// return obj; // 2
+			// 判断构造函数返回值是否为对象，如是对象返回构造函数的值，如果不是返回构造函数的内容属性
+			return typeof ret === 'object' ? ret : obj;
+		}
+		// console.log(new Foo(18));
+		console.log(objectFactory(Foo, 18));
+	</script>
+</body>
+</html>
