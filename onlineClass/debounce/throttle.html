@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+		<button id="btn">节流按钮</button>
+		<script>
+			function success(e) {
+				console.log('提交成功！');
+			}
+
+			// 节流函数
+			const throttle = (fn, delay) => { // 1
+				let flag = true; // 5
+				return (...args) => { // 4
+					if (!flag) return; 
+					flag = false; // 6
+					setTimeout(() => { // 3
+						fn.apply(this, args) // 7
+						flag = true;
+					}, delay)
+				}
+			}
+			const oThrottle = throttle(success, 2000); // 2
+			let btn = document.getElementById('btn');
+			btn.addEventListener('click', oThrottle);
+		</script>
+</body>
+</html>

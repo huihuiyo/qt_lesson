@@ -7,7 +7,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<button id="btn">提交成功</button>
+	<button id="btn">防抖按钮</button>
 	<script>
 		function success (e) {
 			console.log('提交成功！');
@@ -19,7 +19,7 @@
 			return (...args) => { // 4
 				clearTimeout(timer); // 5
 				timer = setTimeout(() => { // 3
-					fn.apply(this, args); // 6
+					fn.apply(this, args); // 6 绑定this
 				}, delay);
 			}
 		};
