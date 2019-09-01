@@ -1,5 +1,6 @@
 ## js
  - this apply call
+ - instanceof
 
 ## node
  - 图片上传
