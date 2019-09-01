@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/**
+		 * {
+		 * 	event1: fn,
+		 * 	event2: [fn1, fn2]
+		 * }
+		 **/
+		class EventEmitter {
+			constructor() {
+				this._event = {}
+			}
+			on(type, fn) {
+				if (typeof fn !== 'function') return null;
+				const handler = this._event[type];
+				if (!handler) {
+					this._event[type] = fn;
+				} else if (handler) {
+					this._event[type] = [].concat(this._event[type], fn);
+				}
+				return this;
+			}
+			emit(type, ...args) {
+				// this === 实例
+				const handler = this._event[type];
+				if (!handler) return false;
+				if (Array.isArray(handler)) {
+					handler.forEach(fn => {
+						fn.call(this, ...args);
+					})
+				} else {
+					handler.call(this, ...args);
+				}
+			}
+		}
+		const ev = new EventEmitter();
+		ev.on('ev1', function () {
+			console.log(1);
+		})
+		ev.on('ev2', function (a ,b) {
+			console.log(2, a, b);
+		})
+		ev.on('ev2', function (a, b) {
+			console.log(3, a, b);
+		})
+		ev.on('ev3', function (a, b) {
+			console.log(this);
+		})
+		ev.on('ev3', function (a, b) {
+			console.log(this === ev);
+		})
+		ev.emit('ev3', 1, 2);
+	</script>
+</body>
+</html>
