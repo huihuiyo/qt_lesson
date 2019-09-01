@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">提交成功</button>
+	<script>
+		function success (e) {
+			console.log('提交成功！');
+		}
+
+		// 防抖函数
+		const debounce = (fn, delay) => { // 1
+			let timer = null;
+			return (...args) => { // 4
+				clearTimeout(timer); // 5
+				timer = setTimeout(() => { // 3
+					fn.apply(this, args); // 6
+				}, delay);
+			}
+		};
+		const oDebounce = debounce(success, 1000); // 2
+
+		let btn = document.getElementById('btn');
+		btn.addEventListener("click", oDebounce);
+	</script>
+</body>
+</html>
