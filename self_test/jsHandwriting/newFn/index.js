@@ -11,7 +11,6 @@ function TestFn (num1, num2) {
 		n1: this.number1,
 		n2: num2
 	}
-	
 }
 
 console.log(newFn(TestFn, 1, 2));
