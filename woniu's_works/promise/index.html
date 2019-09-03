@@ -31,10 +31,14 @@
 			console.log('be a father');
 		}
 		
-		xq().then((e) => {
-			console.log(e);
-			marry().then(sw);
-		});
+		// xq().then((e) => {
+		// 	console.log(e);
+		// 	marry().then(sw);
+		// });
+		
+		// Promise.all([xq(), marry()]).then(sw); // 先按原时间执行[xq(), marry()]再执行.then(sw)
+
+		// Promise.race([xq(), marry()]).then(sw); // 先执行[xq(), marry()]中第一快的，再直接执行.then(sw)，其余按原时间执行完
 	</script>
 </body>
 </html>
