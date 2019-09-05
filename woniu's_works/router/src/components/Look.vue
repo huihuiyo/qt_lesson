@@ -1,15 +1,17 @@
 <template>
-  <div class="hello">
+  <div class="look">
     <h1>{{ msg }}</h1>
+    <p>{{$route.params.oid}}</p>
+    <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Look',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your look.vue'
     }
   }
 }

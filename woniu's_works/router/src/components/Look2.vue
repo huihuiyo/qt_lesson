@@ -1,15 +1,16 @@
 <template>
-  <div class="hello">
+  <div class="lookpage2">
     <h1>{{ msg }}</h1>
+    {{$route.params.id}}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'LookPage2',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your LookPage2.vue'
     }
   }
 }
