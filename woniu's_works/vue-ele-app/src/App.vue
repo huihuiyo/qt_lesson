@@ -30,8 +30,7 @@ export default {
     'v-Header': Header
   },
   created () {
-    this.$http.get('https://www.easy-mock.com/mock/5d721c4c9aaed00b9c3bde5e/vue-eleme-seller/vue-eleme-seller').then(res => {
-      console.log(res)
+    this.$http.get('http://localhost:8080/static/seller.json').then(res => {
       if (res.data.errno === 0) {
         this.seller = Object.assign({}, this.seller, res.data.data)
       }
