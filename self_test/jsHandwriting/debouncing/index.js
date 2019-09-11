@@ -13,5 +13,5 @@ function realFunc () {
   console.log('keydown!')
 }
 
-window.addEventListener('keydown', debounce(realFunc)) 
+window.addEventListener('keydown', debounce(realFunc)) // 采用防抖函数
 // window.addEventListener('keydown', realFunc) // 没采用防抖函数
