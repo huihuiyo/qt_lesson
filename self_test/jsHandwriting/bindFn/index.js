@@ -12,8 +12,10 @@ var obj = {
 
 Function.prototype.bindFn = function (content) {
 	let fn = this;
-	let args = [...arguments].slice(1);
+  let args = [...arguments].slice(1);
+  console.log(this)
 	let resFn = function () {
+    console.log(this)
 		return fn.apply(this instanceof resFn ? this : content, args.concat(...arguments));
 	};
 	function Temp () {};
@@ -22,4 +24,4 @@ Function.prototype.bindFn = function (content) {
 	return resFn;
 }
 
-console.log(testBind.bindFn(obj, 1, 2));
+console.log(testBind.bindFn(obj, 1, 2)());
