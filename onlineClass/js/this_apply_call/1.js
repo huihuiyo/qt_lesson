@@ -7,4 +7,5 @@ function a() {
 	var name = "Cherry";
 	console.log(name);
 	console.log(this.name);
-} 
+}
+a()
