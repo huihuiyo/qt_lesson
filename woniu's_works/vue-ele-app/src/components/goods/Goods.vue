@@ -56,6 +56,7 @@
     </div>
     <!-- 购物车 -->
     <Shopcart
+      ref='shopcart'
       :selectFoods='selectFoods'
       :deliveryPrice='seller.deliveryPrice'
       :minPrice='seller.minPrice'
@@ -125,8 +126,13 @@ export default {
         this.listHeight.push(height)
       }
     },
-    addFood (event) {
-      // console.log(event)
+    addFood (target) {
+      this._drop(target)
+    },
+    _drop () {
+      this.$nextTick(() => {
+        this.$refs.shopcart.drop()
+      })
     }
   },
   computed: {
