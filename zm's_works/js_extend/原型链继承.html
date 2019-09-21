@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function Go(){
+    //   this.a = []
+    // }
+    // Go.prototype.a = 2
+    // var obj = new Go()
+    // // 先构造出 一个对象
+    // // 处理了一下属性 prototype
+    // // 返回这个函数
+    // console.log(obj)
+    // // var obj = {
+    // //   a: 1,
+    // //   __proto__: {
+    // //     a: 2
+    // //   }
+    // // }
+    // // console.log(obj.__proto__ === Go.prototype) // true
+    // function Child1 () {}
+    // Child1.prototype = new Go()
+    // function Child2 () {}
+    // Child2.prototype = new Go()
+    // var child1 = new Child1()
+    // var child2 = new Child2()
+    // child1.a = 100
+    // console.log(child2)
+    // // Child1.prototype = {
+    // //   a: 1,
+    // //   __proto__: {
+    // //     a: 2
+    // //   }
+    // // }
+    // console.log(new Child1())
+
+
+    function Go() {
+      this.a = [];
+    }
+    // Go.prototype.a = 2;
+    Go.prototype.change = function () {
+      this.a.push(1);
+    }
+    function Child() {};
+    Child.prototype = new Go();
+    var child1 = new Child()
+    var child2 = new Child()
+    child1.change()
+    // child1 and child2
+    // {
+    //   __proto__:{
+    //     a: [],
+    //     __proto__: {}
+    //   }
+    // }
+    console.log(child2)
+  </script>
+</body>
+</html>

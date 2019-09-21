@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore-min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  // 面向对象   继承：把类组合起来
+  // 函数式编程   组合：把函数功能组合起来
+  let str = 'javascript'
+  // 1. 转大写
+  // 2. 逆序
+  let util = {
+    fn: (str) => {
+      let upperStr = str.toUpperCase()
+      return upperStr.split('').reverse().join('')
+    },
+    fn1: (str) => {
+      let upperStr = str.toUpperCase()
+      return upperStr.split('')
+    }
+  }
+  console.log(util.fn(str))
+
+  // 1. 转大写
+  // 2. 大写字母组成的数组
+  const toUpperCase = str => str.toUpperCase()
+  const reverse = str => str.split('').reverse().join('')
+  const toArray = str => str.split('')
+
+  // 参数倒序组合
+  const upRe = _.compose(reverse, toUpperCase)
+  console.log(upRe(str))
+
+  const upTa = _.compose(toArray, toUpperCase)
+  console.log(upTa(str))
+
+  // 实现 compose
+  // 高阶函数 接受函数 返回函数
+  function compose1 (f1, f2) {
+    return function (str) {
+      return f1(f2(str))
+    }
+  }
+  const upArr1 = compose1(toArray, toUpperCase)
+  console.log(upArr1(str))
+
+  function compose2 (...fns) {
+    // fns []
+    return fns.reduce((pre, next) => {
+      return function (str) {
+        return pre = pre(next(str))
+      }
+    })
+  }
+  const pushStr = arr => arr.concat('hello')
+  const upArr2 = compose2(pushStr, toArray, toUpperCase)
+  console.log(upArr2(str))
+  </script>
+</body>
+</html>
