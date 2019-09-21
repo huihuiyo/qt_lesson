@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const arr = [1, 2]
+    const testObj = {
+      name: 'objName'
+    }
+    function testFunc(...argsArr) {
+      console.log('this.name:', this.name)
+      console.log('argsArr:', argsArr)
+    }
+    Function.prototype.myBind = function (testObj, ...rest) {
+      if(arguments.length == 2 && Array.isArray(arguments[1])) {
+        try{
+          throw new Error('myCall参数错误！')
+        } catch (e) {
+          console.log(e.name + ': ' + e.message)
+        }
+        return function () {}
+      }
+      
+      const _this = this
+      let resFn = function () {
+        _this.apply(this instanceof resFn ? this : testObj, rest)
+      }
+      resFn.prototype = Object.create(this.prototype)
+      // const TempFunc = function () {}
+      // TempFunc.prototype = this.prototype
+      // resFn.prototype = new TempFunc()
+      return resFn
+    }
+
+    const BindFunc = testFunc.myBind(testObj, ...arr)
+    BindFunc.prototype.a = function () {}
+    var test = new BindFunc
+    console.log(BindFunc.prototype)
+    console.log(testFunc.prototype)
+    
+  </script>
+</body>
+
+</html>
