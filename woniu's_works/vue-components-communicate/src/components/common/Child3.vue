@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div@click="change">{{msg}}</div>
+    <div @click="change">{{msg}}</div>
     <div class="display">{{c3msg}}</div>
   </div>
 </template>
