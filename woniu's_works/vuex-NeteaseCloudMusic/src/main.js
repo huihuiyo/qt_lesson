@@ -8,6 +8,7 @@ import VueLazyload from 'vue-lazyload'
 import def_lazy_img from '../static/img/loading.gif'
 
 import store from './vuex/store'
+import '../static/css/reset.css'
 
 Vue.use(VueLazyload, {
   loading: def_lazy_img

@@ -8,18 +8,22 @@
       </router-link>
     </v-Header>
     <v-SideBar></v-SideBar>
-    <!-- <router-view/> -->
+    <!-- tab -->
+    <v-Tab></v-Tab>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header'
 import SideBar from '@/components/SideBar'
+import Tab from '@/components/Tab'
 export default {
   name: 'App',
   components: {
     'v-Header': Header,
-    'v-SideBar': SideBar
+    'v-SideBar': SideBar,
+    'v-Tab': Tab
   }
 }
 </script>
