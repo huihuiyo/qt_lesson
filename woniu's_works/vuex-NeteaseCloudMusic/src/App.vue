@@ -11,6 +11,7 @@
     <!-- tab -->
     <v-Tab></v-Tab>
     <router-view/>
+    <v-play></v-play>
   </div>
 </template>
 
@@ -18,12 +19,14 @@
 import Header from '@/components/Header'
 import SideBar from '@/components/SideBar'
 import Tab from '@/components/Tab'
+import Play from '@/components/Play'
 export default {
   name: 'App',
   components: {
     'v-Header': Header,
     'v-SideBar': SideBar,
-    'v-Tab': Tab
+    'v-Tab': Tab,
+    'v-play': Play
   }
 }
 </script>

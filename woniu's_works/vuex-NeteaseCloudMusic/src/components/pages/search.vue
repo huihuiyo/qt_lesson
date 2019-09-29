@@ -31,7 +31,7 @@
     </div>
     <!-- 搜索结果 -->
     <div class="search-result" v-show="query" ref="rearchResult">
-      
+      <v-suggest :query="query"></v-suggest>
     </div>
   </div>
 </template>
@@ -40,6 +40,8 @@
 import searchBox from '@/components/searchBox'
 import scroll from '@/components/scroll'
 import searchList from '@/components/searchList'
+import suggest from '@/components/suggest'
+
 export default {
   data () {
     return {
@@ -57,11 +59,12 @@ export default {
   components: {
     'v-search-box': searchBox,
     'v-scroll': scroll,
-    'v-searchList': searchList
+    'v-searchList': searchList,
+    'v-suggest': suggest
   },
   methods: {
-    onQueryChange () {
-
+    onQueryChange (query) {
+      this.query = query
     },
     addQuery () {
 
