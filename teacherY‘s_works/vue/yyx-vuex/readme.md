@@ -1,29 +1,8 @@
-# yyx-vuex
+- vuex意义？
+  vuex 是vue全家桶的1/3
+  在设计项目时 组件设计 + 数据管理
 
-## Project setup
-```
-yarn install
-```
+  MVVM 世界里，数据驱动界面，
+  父子孙等往下传递 emit
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+  数据管理中心，数据就不会出问题
