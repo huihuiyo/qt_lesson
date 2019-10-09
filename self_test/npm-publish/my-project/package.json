@@ -1,0 +1,26 @@
+{
+  "name": "lyyy-color-button-test",
+  "version": "0.1.2",
+  "main": "lib/color-button.umd.min.js",
+  "keyword": "colorButton button color",
+  "description": "color-button, npm打包上传及使用小测试",
+  "author": "LY",
+  "private": false,
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "lib": "vue-cli-service build --target lib --name color-button --dest lib packages/index.js"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "babel-plugin-component": "^1.1.1",
+    "less": "^3.0.4",
+    "less-loader": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
