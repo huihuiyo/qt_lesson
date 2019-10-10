@@ -118,10 +118,11 @@
 
 <script>
 import scroll from "@/components/scroll";
+import { mapMutations, mapGetters } from 'vuex'
+import api from '@/api'
 export default {
   data() {
     return {
-      playList: [123],
       currentTime: 0,
       duration: 0,
       playingLyric: "lyric",
@@ -141,7 +142,11 @@ export default {
     },
     disableCls() {
       return this.songReady ? "" : "disable";
-    }
+    },
+    ...mapGetters([
+      'playList',
+      'playing',
+    ])
   },
   methods: {
     enter() {},
@@ -149,13 +154,15 @@ export default {
     leave() {},
     afterLeave() {},
     currentSong() {},
-    back() {},
+    back() {
+      this.setFullScreen(false)
+    },
     middleTouchEnd() {},
     currentShow() {},
     changeMode() {},
     format() {},
     prev() {},
-    playing() {},
+
     togglePlaying() {},
     next() {},
     showPlaylist() {},
@@ -163,7 +170,21 @@ export default {
     error() {},
     updateTime() {},
     end() {},
-    pause() {}
+    pause() {},
+    ...mapMutations({
+      setFullScreen: 'SET_FULL_SCREEN'
+    })
+  },
+  watch: {
+    playing (newPlaying) {
+      if (!this.songReady) {
+        return
+      }
+      const audio = this.$refs.audio;
+      this.$nextTick(() => {
+        newPlaying ? audio.play() : audio.pause()
+      })
+    }
   }
 };
 </script>

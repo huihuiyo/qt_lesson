@@ -31,7 +31,7 @@
     </div>
     <!-- 搜索结果 -->
     <div class="search-result" v-show="query" ref="rearchResult">
-      <v-suggest :query="query"></v-suggest>
+      <v-suggest :query="query" @select="saveSearch" @listScroll='blurInput' ref="suggest"></v-suggest>
     </div>
   </div>
 </template>
@@ -41,6 +41,8 @@ import searchBox from '@/components/searchBox'
 import scroll from '@/components/scroll'
 import searchList from '@/components/searchList'
 import suggest from '@/components/suggest'
+import api from '@/api'
+import { searchMixin } from '@/common/mixin'
 
 export default {
   data () {
@@ -48,14 +50,11 @@ export default {
       query: '',
       shortcut: [],
       refreshDelay: 1,
-      hotKey: [
-        {first: '123'},
-        {first: '456'},
-        {first: '78999999999999999999999999999'}
-      ],
+      hotKey: [],
       searchHistory: [1]
     }
   },
+  mixins: [searchMixin],
   components: {
     'v-search-box': searchBox,
     'v-scroll': scroll,
@@ -68,7 +67,19 @@ export default {
     },
     addQuery () {
 
-    }
+    },
+    _getHotKey() {
+      api.HotSearchKey().then((res) => {
+        if (res.code === 200) {
+          this.hotKey = res.result.hots.slice(0, 10);
+        }
+      })
+    },
+    
+    blurInput() {}
+  },
+  created() {
+    this._getHotKey()
   }
 }
 </script>
