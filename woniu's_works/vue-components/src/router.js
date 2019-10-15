@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import Home from './components/common/a.vue'
-import Home from './components/common/switch.vue'
+// import Home from './components/common/switch.vue'
+import Home from '@/views/Display'
 
 Vue.use(Router)
 
