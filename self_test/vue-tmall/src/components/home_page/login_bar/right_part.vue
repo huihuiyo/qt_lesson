@@ -3,17 +3,23 @@
     <ul class="quick-menu">
       <li class="mytaobao menu-item">
         <div class="menu-item-content">
-          <a class="menu-hd" href="//i.taobao.com/my_taobao.htm?spm=a223b.7790858.a2226mz.4.261b4187pdHi7B" target="_top" rel="login-menu-mytb">
+          <a @mouseenter="enter" @mouseleave="leave" class="menu-hd" :class="{'hoverCss': mouseIn}" href="//i.taobao.com/my_taobao.htm?spm=a223b.7790858.a2226mz.4.261b4187pdHi7B" target="_top" rel="login-menu-mytb">
             我的淘宝
-            <b></b>
+            <b :class="{'rotateB': mouseIn}"></b>
           </a>
-          <div class="menu-bd">
+          <div class="menu-bd" v-show="mouseIn" @mouseenter="enter" @mouseleave="leave">
             <div class="menu-bd-panel">
               <a href="//trade.taobao.com/trade/itemlist/list_bought_items.htm?t=20110530" target="_top" rel="login-menu-mytb">已买到的宝贝</a>
               <a href="//trade.taobao.com/trade/itemlist/list_sold_items.htm?t=20110530" target="_top" rel="login-menu-mytb">已卖出的宝贝</a>
             </div>
           </div>
         </div>
+      </li>
+      <li class="cart">
+        <i class="iconfont icon-gouwuche tmall_icon_font"></i>
+        <a class="sn-cart-link" href="//cart.tmall.com/cart/myCart.htm?spm=a223b.7790858.a2226mz.8.261b4187cwsXek&amp;from=btop" target="_top" rel="nofollow">
+          购物车
+        </a>
       </li>
     </ul>
   </div>
@@ -23,13 +29,30 @@
 export default {
   data () {
     return {
-
+      mouseIn: false
+    }
+  },
+  methods: {
+    enter() {
+      this.mouseIn = true;
+      // const arrow = this.$refs.arrow;
+      // arrow.style.transform = 'rotateY(90deg)';
+    },
+    leave() {
+      this.mouseIn = false;
     }
   }
 }
 </script>
 
 <style scoped>
+.tmall_icon_font {
+  color: #FF0036;
+  position: relative;
+  top: 1px;
+  font-size: 12px;
+  font-style: normal;
+}
 .login_bar a:link, .login_bar a:visited, .bar_container {
   color: #999;
 }
@@ -49,6 +72,9 @@ export default {
   float: left;
   position: relative;
 }
+.quick-menu a:hover {
+  text-decoration: underline !important;
+}
 .menu-item {
   z-index: 93110;
   position: relative;
@@ -59,7 +85,7 @@ export default {
 .menu-hd {
   padding-right: 14px;
 }
-.menu-hd {
+.menu-hd, .cart {
   padding: 0 10px;
 }
 .menu-hd {
@@ -71,8 +97,10 @@ export default {
   border-width: 0 1px;
   position: relative;
 }
-.menu-hd:hover {
-  background-color: #fff
+.hoverCss {
+  background-color: #fff;
+  border-color: #eee;
+  padding-bottom: 1px;
 }
 .menu-hd b {
   backface-visibility: hidden;
@@ -88,6 +116,12 @@ export default {
   font-size: 0;
   line-height: 0;
 }
+.rotateB {
+  border-color: #bbb transparent transparent;
+  transition: transform .2s ease-in;
+  transform: rotateZ(180deg);
+  transform-origin: 50% 30%;
+}
 .menu-bd {
   width: 74px;
 }
@@ -96,7 +130,6 @@ export default {
   padding: 8px 10px;
 }
 .menu-bd {
-  /* display: none; */
   position: absolute;
   left: 0;
   top: 27px;
@@ -110,5 +143,12 @@ export default {
   display: block;
   line-height: 20px;
 }
-
+.cart {
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+}
+.cart a {
+  position: static;
+}
 </style>

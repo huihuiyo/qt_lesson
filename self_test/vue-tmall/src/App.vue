@@ -5,7 +5,7 @@
 </template>
 
 <style>
-@import url(//at.alicdn.com/t/font_1456710_6v6y79dpui.css);
+@import url(//at.alicdn.com/t/font_1456710_4ffzo7uzp0t.css);
 html {
   scroll-behavior: smooth;
 }
