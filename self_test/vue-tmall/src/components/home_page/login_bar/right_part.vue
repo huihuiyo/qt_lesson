@@ -3,11 +3,11 @@
     <ul class="quick-menu">
       <li class="mytaobao menu-item">
         <div class="menu-item-content">
-          <a @mouseenter="enter" @mouseleave="leave" class="menu-hd" :class="{'hoverCss': mouseIn}" href="//i.taobao.com/my_taobao.htm?spm=a223b.7790858.a2226mz.4.261b4187pdHi7B" target="_top" rel="login-menu-mytb">
+          <a @mouseenter="enterDiv1" @mouseleave="leaveDiv1" class="menu-hd" :class="{'hoverCss': mouseInDiv1}" href="//i.taobao.com/my_taobao.htm?spm=a223b.7790858.a2226mz.4.261b4187pdHi7B" target="_top" rel="login-menu-mytb">
             我的淘宝
-            <b :class="{'rotateB': mouseIn}"></b>
+            <b :class="{'rotateB': mouseInDiv1}"></b>
           </a>
-          <div class="menu-bd" v-show="mouseIn" @mouseenter="enter" @mouseleave="leave">
+          <div class="menu-bd" v-show="mouseInDiv1" @mouseenter="enterDiv1" @mouseleave="leaveDiv1">
             <div class="menu-bd-panel">
               <a href="//trade.taobao.com/trade/itemlist/list_bought_items.htm?t=20110530" target="_top" rel="login-menu-mytb">已买到的宝贝</a>
               <a href="//trade.taobao.com/trade/itemlist/list_sold_items.htm?t=20110530" target="_top" rel="login-menu-mytb">已卖出的宝贝</a>
@@ -17,9 +17,24 @@
       </li>
       <li class="cart">
         <i class="iconfont icon-gouwuche tmall_icon_font"></i>
-        <a class="sn-cart-link" href="//cart.tmall.com/cart/myCart.htm?spm=a223b.7790858.a2226mz.8.261b4187cwsXek&amp;from=btop" target="_top" rel="nofollow">
+        <a class="sn-cart-link" href="//cart.tmall.com/cart/myCart.htm?spm=a223b.7790858.a2226mz.8.261b4187cwsXek&amp;from=btop" target="_top" rel="login-menu-mytb">
           购物车
         </a>
+      </li>
+      <li class="favorite menu-item">
+        <div class="menu-item-content">
+          <a class="menu-hd" @mouseenter="enterDiv2" @mouseleave="leaveDiv2" :class="{'hoverCss': mouseInDiv2}" href="//shoucang.taobao.com/shop_collect_list.htm?spm=a223b.7790858.a2226mz.9.261b4187jTjPeA&amp;scjjc=c1" target="_top" rel="login-menu-mytb">
+            收藏夹
+            <b :class="{'rotateB': mouseInDiv2}"></b>
+          </a>
+          <div class="menu-bd" v-show="mouseInDiv2" @mouseenter="enterDiv2" @mouseleave="leaveDiv2">
+            <div class="menu-bd-panel">
+              <a href="//shoucang.taobao.com/item_collect.htm" target="_top" rel="login-menu-mytb">收藏的宝贝</a>
+              <a href="//shoucang.taobao.com/shop_collect_list.htm" target="_top" rel="login-menu-mytb">收藏的店铺</a>
+            </div>
+          </div>
+        </div>
+
       </li>
     </ul>
   </div>
@@ -29,17 +44,22 @@
 export default {
   data () {
     return {
-      mouseIn: false
+      mouseInDiv1: false,
+      mouseInDiv2: false
     }
   },
   methods: {
-    enter() {
-      this.mouseIn = true;
-      // const arrow = this.$refs.arrow;
-      // arrow.style.transform = 'rotateY(90deg)';
+    enterDiv1() {
+      this.mouseInDiv1 = true;
     },
-    leave() {
-      this.mouseIn = false;
+    leaveDiv1() {
+      this.mouseInDiv1 = false;
+    },
+    enterDiv2() {
+      this.mouseInDiv2 = true;
+    },
+    leaveDiv2() {
+      this.mouseInDiv2 = false;
     }
   }
 }
