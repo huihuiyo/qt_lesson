@@ -3,34 +3,34 @@
     <ul class="quick-menu">
       <li class="mytaobao menu-item">
         <div class="menu-item-content">
-          <a @mouseenter="enterDiv(0)" @mouseleave="leaveDiv(0)" class="menu-hd" :class="{'hoverCss': mouseInDiv[0].status}" href="//i.taobao.com/my_taobao.htm?spm=a223b.7790858.a2226mz.4.261b4187pdHi7B" target="_top" rel="login-menu-mytb">
+          <a @mouseenter="enterDiv(0)" @mouseleave="leaveDiv(0)" class="menu-hd" :class="{'hoverCss': mouseInDiv[0].status}" :href="aTagsLink(0)" target="_top">
             我的淘宝
             <b :class="{'rotateB': mouseInDiv[0].status}"></b>
           </a>
           <div class="menu-bd" v-show="mouseInDiv[0].status" @mouseenter="enterDiv(0)" @mouseleave="leaveDiv(0)">
             <div class="menu-bd-panel">
-              <a href="//trade.taobao.com/trade/itemlist/list_bought_items.htm?t=20110530" target="_top" rel="login-menu-mytb">已买到的宝贝</a>
-              <a href="//trade.taobao.com/trade/itemlist/list_sold_items.htm?t=20110530" target="_top" rel="login-menu-mytb">已卖出的宝贝</a>
+              <a :href="aTagsLink(1)" target="_top">已买到的宝贝</a>
+              <a :href="aTagsLink(2)" target="_top">已卖出的宝贝</a>
             </div>
           </div>
         </div>
       </li>
       <li class="cart">
         <i class="iconfont icon-gouwuche tmall_icon_font"></i>
-        <a class="cart-link" href="//cart.tmall.com/cart/myCart.htm?spm=a223b.7790858.a2226mz.8.261b4187cwsXek&amp;from=btop" target="_top" rel="login-menu-mytb">
+        <a class="cart-link" :href="aTagsLink(3)" target="_top">
           购物车
         </a>
       </li>
       <li class="favorite menu-item">
         <div class="menu-item-content">
-          <a class="menu-hd" @mouseenter="enterDiv(1)" @mouseleave="leaveDiv(1)" :class="{'hoverCss': mouseInDiv[1].status}" href="//shoucang.taobao.com/shop_collect_list.htm?spm=a223b.7790858.a2226mz.9.261b4187jTjPeA&amp;scjjc=c1" target="_top" rel="login-menu-mytb">
+          <a class="menu-hd" @mouseenter="enterDiv(1)" @mouseleave="leaveDiv(1)" :class="{'hoverCss': mouseInDiv[1].status}" :href="aTagsLink(4)" target="_top">
             收藏夹
             <b :class="{'rotateB': mouseInDiv[1].status}"></b>
           </a>
           <div class="menu-bd" v-show="mouseInDiv[1].status" @mouseenter="enterDiv(1)" @mouseleave="leaveDiv(1)">
             <div class="menu-bd-panel">
-              <a href="//shoucang.taobao.com/item_collect.htm" target="_top" rel="login-menu-mytb">收藏的宝贝</a>
-              <a href="//shoucang.taobao.com/shop_collect_list.htm" target="_top" rel="login-menu-mytb">收藏的店铺</a>
+              <a :href="aTagsLink(5)" target="_top">收藏的宝贝</a>
+              <a :href="aTagsLink(6)" target="_top">收藏的店铺</a>
             </div>
           </div>
         </div>
@@ -169,6 +169,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -188,7 +189,22 @@ export default {
         {
           status: false
         }
-      ]
+      ],
+      logoutHref: [
+        '//i.taobao.com/my_taobao.htm',
+        '//trade.taobao.com/trade/itemlist/list_bought_items.htm?t=20110530',
+        '//trade.taobao.com/trade/itemlist/list_sold_items.htm?t=20110530',
+        '//cart.tmall.com/cart/myCart.htm?spm=a223b.7790858.a2226mz.8.261b4187cwsXek&amp;from=btop',
+        '//shoucang.taobao.com/shop_collect_list.htm?spm=a223b.7790858.a2226mz.9.261b4187jTjPeA&amp;scjjc=c1',
+        '//shoucang.taobao.com/item_collect.htm',
+        '//shoucang.taobao.com/shop_collect_list.htm'
+      ],
+      loginHref: [
+        '/my_taobao.htm'
+      ],
+      ...mapState({
+        login_state: state => state.loginState.sign_on,
+      })
     }
   },
   methods: {
@@ -197,6 +213,12 @@ export default {
     },
     leaveDiv(opt) {
       this.mouseInDiv[opt].status = false;
+    },
+    aTagsLink(opt) {
+      if (!this.login_state)
+        return this.logoutHref[opt];
+      else
+        return this.loginHref[opt];
     }
   }
 }
@@ -211,7 +233,7 @@ export default {
   font-style: normal;
   margin-right: 4px;
 }
-.login_bar a:link, .login_bar a:visited, .bar_container {
+.login_bar a, .login_bar a:link, .login_bar a:visited, .bar_container {
   color: #999;
 }
 .login_bar .menu-bd, .login_bar a:active, .login_bar a:hover {

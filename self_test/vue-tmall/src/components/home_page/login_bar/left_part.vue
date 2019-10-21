@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   data() {
     return {};
@@ -44,7 +44,9 @@ export default {
   computed: {
     ...mapState({
       login_state: state => state.loginState.sign_on,
-      user_info: state => state.loginState.user_info
+    }),
+    ...mapGetters('loginState', {
+      user_info: 'loginUser'
     })
   }
 };

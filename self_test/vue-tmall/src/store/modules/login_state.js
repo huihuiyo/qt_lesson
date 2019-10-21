@@ -1,15 +1,33 @@
 const state = {
   sign_on: false,
+  show_login_dialog: true,
   user_info: {
-    id: 1,
-    avatar: 'https://avatars2.githubusercontent.com/u/10172415?s=40&v=4',
-    username: 'HHui',
-    is_vip: true,
-    integral: 1923,
-    collection_count: 7
   }
-};
+}
+const getters = {
+  userState: (state) => {
+    return state.sign_on;
+  },
+  loginUser: (state, getters, rootState) => {
+    const id = state.user_info.id;
+    const user = rootState.userInfo.all.find(user => user.id === id);
+    return user;
+  }
+}
+const actions = {
+  change_show_state({commit}) {
+    commit('change_show_state')
+  }
+}
+const mutations = {
+  change_show_state(state) {
+    state.show_login_dialog = false;
+  }
+}
 export default {
   namespaced: true,
-  state
+  state,
+  getters,
+  actions,
+  mutations
 }
