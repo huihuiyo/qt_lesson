@@ -70,7 +70,7 @@ export default {
   font-style: normal;
 }
 .login_p, .register_p, .point_a, .logout_a {
-  padding: 0 10px;  
+  padding: 0 10px;
 }
 .login_p {
   padding-left: 20px;
