@@ -59,8 +59,6 @@ export default {
 }
 .tmall_icon_font {
   color: #FF0036;
-}
-.tmall_icon_font {
   font-size: 16px;
   font-style: normal;
 }

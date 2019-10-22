@@ -1,15 +1,17 @@
 <template>
   <transition name="login_background_transition">
-    <div class="login_div" v-show="show_login_dialog" @click.stop.prevent="closeDialog">
+    <div class="login_div" v-show="show_login_dialog">
       <div class="login-banner-wrap" style="width: 100%; background-color: rgb(159, 22, 28);">
         <div class="inner">
           <img src="https://img.alicdn.com/tps/i4/TB1qaUFjET1gK0jSZFhSuuAtVXa.jpg" alt="">
           <a href="https://1111.tmall.com/?wh_weex=true&amp;wh_biz=tm&amp;pos=1&amp;acm=lb-zebra-153802-761482.1003.8.6806164&amp;wx_main_hc=true&amp;scm=1003.8.lb-zebra-153802-761482.ITEM_1570150932749_6806164"></a>
         </div>
       </div>
-      <div class="form" style="display: block; right: 509.5px;">
+      <div class="form" style="display: block; right: 410px;">
         <div class="form-content">
-
+          <div class="input-part">
+            <InputPart />
+          </div>
         </div>
       </div>
     </div>
@@ -17,12 +19,11 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex';
+import InputPart from './loginInput.vue'
 export default {
-  data () {
-    return {
-
-    }
+  components: {
+    InputPart
   },
   computed: {
     ...mapState({
@@ -31,7 +32,6 @@ export default {
   },
   methods: {
     closeDialog() {
-      console.log(1)
       this.$store.dispatch('loginState/change_show_state')
     }
   }
@@ -77,11 +77,17 @@ export default {
 .login_div .form {
   display: none;
   position: absolute;
-  top: 91px;
+  top: 210px;
   right: 60px;
   background: #fff;
 }
 .login_div .form-content {
   position: relative;
+}
+.login_div .form-content .input-part {
+  width: 350px;
+  height: 400px;
+  overflow: hidden;
+  background: #fff;
 }
 </style>
