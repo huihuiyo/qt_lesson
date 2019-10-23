@@ -1,0 +1,12 @@
+<% include('header') %>
+  view -> index.html
+  <!-- 用户名 性别 -->
+  <!-- <%= %>转义输出 -->
+  <p>username: <%= username %></p>
+  <p>sex: <%= sex %></p>
+  
+  <!-- <% %>当js -->
+  <% hobby.forEach(element => { %>
+    <li><%= element %></li>
+  <% }) %>
+<% include('footer') %>
