@@ -17,6 +17,61 @@
               更多
               <i></i>
             </h2>
+            <div class="global-nav-list">
+              <ul>
+                <li class="global-sub-nav-item link-miao">
+                  <a href="//miao.tmall.com">喵鲜生</a>
+                </li>
+                <li class="global-sub-nav-item link-chaoshi">
+                  <a href="//chaoshi.tmall.com">天猫超市</a>
+                </li>
+                <li class="global-sub-nav-item link-vip">
+                  <a href="//vip.tmall.com">天猫会员</a>
+                </li>
+                <li class="global-sub-nav-item link-nvzhuang">
+                  <a href="//nvzhuang.tmall.com">天猫女装</a>
+                </li>
+                <li class="global-sub-nav-item link-nanzhuang">
+                  <a href="//nanzhuang.tmall.com">天猫男装</a>
+                </li>
+                <li class="global-sub-nav-item link-nvxie">
+                  <a href="//nvxie.tmall.com">天猫女鞋</a>
+                </li>
+                <li class="global-sub-nav-item link-nanxie">
+                  <a href="//nanxie.tmall.com">天猫男鞋</a>
+                </li>
+                <li class="global-sub-nav-item link-neiyi">
+                  <a href="//neiyi.tmall.com">天猫内衣</a>
+                </li>
+                <li class="global-sub-nav-item link-bag">
+                  <a href="//bag.tmall.com">天猫箱包</a>
+                </li>
+                <li class="global-sub-nav-item link-sports">
+                  <a href="//sports.tmall.com">天猫运动</a>
+                </li>
+                <li class="global-sub-nav-item link-3c">
+                  <a href="//3c.tmall.com">天猫电器</a>
+                </li>
+                <li class="global-sub-nav-item link-car">
+                  <a href="//car.tmall.com">阿里汽车</a>
+                </li>
+                <li class="global-sub-nav-item link-mei">
+                  <a href="//mei.tmall.com">天猫美妆</a>
+                </li>
+                <li class="global-sub-nav-item link-baby">
+                  <a href="//baby.tmall.com">天猫母婴</a>
+                </li>
+                <li class="global-sub-nav-item link-jia">
+                  <a href="//jia.tmall.com">天猫家装</a>
+                </li>
+                <li class="global-sub-nav-item link-yao">
+                  <a href="//yao.tmall.com">天猫医药</a>
+                </li>
+                <li class="global-sub-nav-item link-food">
+                  <a href="//food.tmall.com">天猫食品</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </h1>
       </div>
@@ -119,5 +174,33 @@ export default {
   position: absolute;
   top: 6px;
   right: 6px;
+}
+.global-nav-list {
+  position: absolute;
+  left: -1px;
+  top: 18px;
+  width: 140px;
+  padding: 10px 0 0 12px;
+  border: 1px solid #ebebeb;
+  z-index: 9998;
+  background: #fff;
+  overflow: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+.global-nav-list, .global-sub-nav:hover {
+  box-shadow: 0 2px 2px #eee;
+}
+.global-nav-list ul {
+  width: 160px;
+}
+.global-nav-list li {
+  float: left;
+  width: 75px;
+  padding-bottom: 8px;
+}
+.mallLogo .global-nav-list a {
+  color: #333;
+  font-weight: 400;
 }
 </style>
