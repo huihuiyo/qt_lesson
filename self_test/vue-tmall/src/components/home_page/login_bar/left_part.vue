@@ -4,7 +4,8 @@
       <em>喵，欢迎来天猫</em>
       <a
         class="login_p"
-        href="//login.tmall.com/?redirectURL=https%3A%2F%2Fnvxie.tmall.com%2F%3Fspm%3D875.7931836%2FB.category2016012.1.321a4265MTtDcg%26acm%3Dlb-zebra-148799-667863.1003.4.708026%26scm%3D1003.4.lb-zebra-148799-667863.OTHER_14561689118972_708026"
+        href="javascript:;"
+        @click="openLoginDialog()"
         target="_top"
       >请登录</a>
       <a class="register_p" href="//register.tmall.com/" target="_top">免费注册</a>
@@ -36,7 +37,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     return {};
@@ -48,6 +49,12 @@ export default {
     ...mapGetters('loginState', {
       user_info: 'loginUser'
     })
+  },
+  methods: {
+    ...mapActions('loginState', {
+      openLoginDialog: 'change_show_state'
+    })
+
   }
 };
 </script>

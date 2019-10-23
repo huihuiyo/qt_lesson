@@ -1,6 +1,9 @@
 <template>
   <transition name="login_background_transition">
     <div class="login_div" v-show="show_login_dialog">
+      <div class="close-dialog-button" @click="closeDialog">
+        <i class="iconfont icon-guanbi close-button"></i>
+      </div>
       <div class="login-banner-wrap" style="width: 100%; background-color: rgb(159, 22, 28);">
         <div class="inner">
           <img src="https://img.alicdn.com/tps/i4/TB1qaUFjET1gK0jSZFhSuuAtVXa.jpg" alt="">
@@ -49,6 +52,14 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
+}
+.close-dialog-button .close-button {
+  float: right;
+  margin-top: 20px;
+  margin-right: 40px;
+  color: darkgrey;
+  font-size: 40px;
+  cursor: pointer;
 }
 .login-banner-wrap {
   position: relative;

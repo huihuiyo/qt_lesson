@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style>
-@import url(//at.alicdn.com/t/font_1456710_jamus3aixji.css);
+@import url(//at.alicdn.com/t/font_1456710_biln6hb4uv.css);
 html {
   scroll-behavior: smooth;
 }

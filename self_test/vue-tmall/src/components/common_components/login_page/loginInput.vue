@@ -3,8 +3,8 @@
     <div class="login-box">
       <div class="hd">
         <div class="login-switch">
-          <i class="iconfont icon-diannao tmall_icon_font" v-if="normalLoginWay"></i>
-          <i class="iconfont icon-erweima tmall_icon_font" v-else></i>
+          <i class="iconfont icon-diannao tmall_icon_font" v-if="normal_login_way" @click="changeLoginWay"></i>
+          <i class="iconfont icon-erweima tmall_icon_font" v-else @click="changeLoginWay"></i>
         </div>
         <div class="login-tip">
           <div class="poptip">
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="bd">
-        <div class="static-form">
+        <div class="static-form" v-if="!normal_login_way">
           <div class="login-title">
             密码登录
           </div>
@@ -42,7 +42,28 @@
             <div class="submit">
               <button type="submit" tabindex="3" data-ing="正在登录...">登 录</button>
             </div>
+            <div class="login-links">
+              <a href="https://passport.taobao.com/ac/password_find.htm?from_site=0&amp;login_id=&amp;lang=zh_CN&amp;app_name=tmall&amp;tracelog=signin_main_pass" tabindex="6" class="forget-pwd" target="_blank">忘记密码</a>
+              <a href="https://passport.taobao.com/ac/nick_find.htm?from_site=0&amp;lang=zh_CN&amp;app_name=tmall" target="_blank">忘记会员名</a>
+              <a href="http://register.tmall.com?f=login" class="register" target="_blank" tabindex="7">免费注册</a>
+            </div>
           </form>
+        </div>
+        <div class="quick-form" v-else>
+          <div class="qrcode-login" :class="{'qrcode-login-error': login_overtime}" style="display:block">
+            <div class="login-tip">
+              <div class="poptip">
+                <div class="poptip-arrow">
+                  <em></em>
+                  <span></span>
+                </div>
+                <div class="poptip-content">
+                  <i class="iconfont icon-dunpai"></i>
+                  密码登录在这里
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -53,7 +74,14 @@
 export default {
   data () {
     return {
-      normalLoginWay: false
+      normal_login_way: false,
+      login_overtime: false
+    }
+  },
+  methods: {
+    changeLoginWay() {
+      this.normal_login_way = !this.normal_login_way;
+      return this.normal_login_way;
     }
   }
 }
@@ -240,5 +268,25 @@ export default {
   height: 42px;
   line-height: 42px;
   background-color: #ff0036;
+}
+.login-box .submit button:hover {
+  background-color: rgba(255,0,54,.8);
+}
+.login-links {
+  margin-top: 25px;
+  overflow: hidden;
+  text-align: right;
+}
+.login-box .bd .login-links {
+  margin-top: 25px;
+}
+.login-box a {
+  color: #6c6c6c;
+}
+.login-links a {
+  margin-right: 10px;
+}
+.login-links a:hover {
+  color: #ff0036;
 }
 </style>
