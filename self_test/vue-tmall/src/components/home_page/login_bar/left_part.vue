@@ -4,8 +4,7 @@
       <em>喵，欢迎来天猫</em>
       <a
         class="login_p"
-        href="javascript:;"
-        @click="openLoginDialog()"
+        @click="openLoginDialog"
         target="_top"
       >请登录</a>
       <a class="register_p" href="//register.tmall.com/" target="_top">免费注册</a>
@@ -29,7 +28,7 @@
         <a
           class="logout_a"
           target="_top"
-          href="//login.taobao.com/member/logout.jhtml?spm=a223b.7790858.a2226mz.7.261b4187KxgJXI&amp;redirectURL=%2F%2Flogin.tmall.com%2F%3FredirectURL%3Dhttps%253A%252F%252Fnvxie.tmall.com%252F%253Fspm%253D875.7931836%252FB.category2016012.1.321a4265MTtDcg%2526acm%253Dlb-zebra-148799-667863.1003.4.708026%2526scm%253D1003.4.lb-zebra-148799-667863.OTHER_14561689118972_708026"
+          @click="logout"
         >退出</a>
       </span>
     </p>
@@ -52,15 +51,25 @@ export default {
   },
   methods: {
     ...mapActions('loginState', {
-      openLoginDialog: 'change_show_state'
-    })
-
+      change_show_state: 'change_show_state',
+      change_signOn_state: 'change_signOn_state'
+    }),
+    openLoginDialog() {
+      if (!this.login_state && !this.dialog_state) {
+        this.change_show_state()
+      }
+    },
+    logout() {
+      if (this.login_state) {
+        this.change_signOn_state()
+      }
+    }
   }
 };
 </script>
 
 <style scoped>
-.login_bar a:link, .login_bar a:visited, .bar_container {
+.login_bar a, .login_bar a:link, .login_bar a:visited, .bar_container {
   color: #999;
 }
 .login_bar a:active, .login_bar a:hover, .point_a:hover .point_value {
