@@ -12,12 +12,12 @@
               </a>
             </div>
           </span>
-          <div class="global-sub-nav">
+          <div class="global-sub-nav" @mouseleave="mouseLeave" @mouseenter="mouseEnter">
             <h2>
               更多
               <i></i>
             </h2>
-            <div class="global-nav-list">
+            <div class="global-nav-list" v-show="mouseInDiv">
               <ul>
                 <li class="global-sub-nav-item link-miao">
                   <a href="//miao.tmall.com">喵鲜生</a>
@@ -72,20 +72,39 @@
                 </li>
               </ul>
             </div>
+            <b class="global-kill-line" v-show="mouseInDiv"></b>
           </div>
         </h1>
+        <div class="header-extra">
+          <div class="header-banner">
+            <div></div>
+          </div>
+          <SearchPart />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import SearchPart from './header/search_part'
 export default {
   data () {
     return {
-
+      mouseInDiv: false
     }
-  }
+  },
+  components: {
+    SearchPart
+  },
+  methods: {
+    mouseEnter() {
+      this.mouseInDiv = true
+    },
+    mouseLeave() {
+      this.mouseInDiv = false
+    }
+  },
 }
 </script>
 
@@ -154,7 +173,11 @@ export default {
   margin: 8px 0 0;
   margin-top: 10px\9;
   position: relative;
-  z-index: 9990;
+}
+.global-sub-nav:hover h2 i {
+  transition: transform .2s ease-in;
+  transform: rotateZ(180deg);
+  transform-origin: 50% 30%;
 }
 .global-sub-nav h2 {
   font-weight: 400;
@@ -202,5 +225,29 @@ export default {
 .mallLogo .global-nav-list a {
   color: #333;
   font-weight: 400;
+}
+.mallLogo .global-nav-list a:hover {
+  text-decoration: underline !important;
+}
+.global-kill-line {
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  overflow: hidden;
+  border-top: 1px solid #fff;
+  width: 54px;
+  position: absolute;
+  top: 18px;
+  left: 0;
+  z-index: 9999;
+}
+.header-extra {
+  overflow: hidden;
+}
+.header-banner {
+  float: right;
+  height: 70px;
+  padding: 10px 0 0 100px;
+  width: 200px;
 }
 </style>
