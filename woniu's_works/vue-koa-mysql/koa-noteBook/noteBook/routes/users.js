@@ -16,6 +16,8 @@ router.get('/all', async (ctx, next) => {
     ctx.body = res;
   })
 })
+
+// 注册
 router.post('/userRegister', async (ctx, next) => {
   var _username = ctx.request.body.username;
   var _userpwd = ctx.request.body.userpwd;
@@ -67,4 +69,40 @@ router.post('/userRegister', async (ctx, next) => {
 
   })
 })
+
+// 登录
+router.post('/userLogin', async (ctx, next) => {
+  var _username = ctx.request.body.username;
+  var _userpwd = ctx.request.body.userpwd;
+  await userService.userLogin(_username, _userpwd)
+    .then(res => {
+      let r = '';
+      if (res.length) {
+        r = 'ok';
+        let result = {
+          id: res[0].id,
+          nickname: res[0].nickname,
+          username: res[0].username
+        }
+        ctx.body = {
+          code: '800000',
+          data: result,
+          mess: '登录成功'
+        }
+      } else {
+        r = 'error';
+        ctx.body = {
+          code: '800004',
+          data: r,
+          mess: '账号或密码错误'
+        }
+      }
+    }).catch((err) => {
+      ctx.body = {
+        code: '800002',
+        data: err
+      }
+    })
+})
+
 module.exports = router
