@@ -17,7 +17,7 @@ onerror(app)
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
-app.use(cors({
+app.use(KoaCors({
   origin:function(ctx){
     return '*'
   },
