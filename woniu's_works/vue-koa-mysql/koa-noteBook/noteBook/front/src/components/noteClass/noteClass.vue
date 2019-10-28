@@ -39,7 +39,7 @@
             <span>个人主页</span>
           </div>
           <div class="set-item">
-            <van-icon name="points-mall" color="#aaa" size=".4rem" />
+            <van-icon name="comment" color="#aaa" size=".4rem" />
             <span>通知</span>
           </div>
           <div class="set-item">

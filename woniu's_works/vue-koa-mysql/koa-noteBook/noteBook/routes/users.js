@@ -104,5 +104,33 @@ router.post('/userLogin', async (ctx, next) => {
       }
     })
 })
+router.post('/findNoteListByType', async (ctx, next) => {
+  var note_type = ctx.request.body.note_type
+  await userService.findNoteListByType(note_type)
+   .then(async (res) => {
+    let r = ''
+    if (res.length) {
+      r = '查找成功'
+      ctx.body = {
+        code: '800000',
+        data: res,
+        mess: r
+      }
+    } else {
+      r = 'error'
+      ctx.body = {
+        code: '800004',
+        data: r,
+        mess: '查找失败'
+      }
+    }
+   })
+   .catch(err => {
+     ctx.body = {
+       code: '800002',
+       data: err
+     }
+   })
+})
 
 module.exports = router
