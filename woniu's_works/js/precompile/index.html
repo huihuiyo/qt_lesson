@@ -9,20 +9,30 @@
 <body>
   <script>
     // 变量 声明会提升 但赋值不会
-    console.log(a); // undefine
-    var a = 1;
+    // console.log(a); // undefine
+    // var a = 1;
 
-    function fn(a) {
-      console.log(a) // func
-      var a = 123;
-      console.log(a) // 123
-      function a() {}
-      console.log(a) // 123
-      var b = function() {}
-      console.log(b) // func
-      function d() {}
+    // function fn(a) {
+    //   console.log(a) // func
+    //   var a = 123;
+    //   console.log(a) // 123
+    //   function a() {}
+    //   console.log(a) // 123
+    //   var b = function() {}
+    //   console.log(b) // func
+    //   function d() {}
+    // }
+    // fn(a)
+
+
+    // GO {
+    //  
+    // }
+    var global = 100;
+    function fn() {
+      console.log(global); // 100
     }
-    fn(a)
+    fn();
   </script>
 </body>
 </html>
