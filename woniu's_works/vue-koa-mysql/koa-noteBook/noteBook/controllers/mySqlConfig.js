@@ -62,10 +62,23 @@ let findNoteListByType = function(note_type) {
   return allServies.query(_sql)
 }
 
+// 根据笔记列表的id查找笔记的详情
+let findNoteDetailById = function(id) {
+  let _sql = `select * from note where id="${id}"`
+  return allServies.query(_sql)
+}
+
+let insertNote = function (value) {
+  let _sql = 'insert into users set note_content=?, head_img=?, title=?, note_type=?, userId=?, nickname=?;'
+  return allServies.query(_sql, value)
+}
+
 module.exports = {
   getAllUsers,
   insertUser,
   findUser,
   userLogin,
-  findNoteListByType
+  findNoteListByType,
+  findNoteDetailById,
+  insertNote
 }

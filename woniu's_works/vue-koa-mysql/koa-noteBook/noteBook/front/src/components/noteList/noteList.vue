@@ -45,7 +45,7 @@ export default {
         .catch(res => console.log(res));
 		},
 		noteDetail(id) {
-			this.$router.push({path: 'noteDetail', query: {id: id}})
+			this.$router.push({path: '/noteDetail', query: {id: id}})
 		}
   },
   created() {

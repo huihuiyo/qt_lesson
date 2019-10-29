@@ -104,6 +104,7 @@ router.post('/userLogin', async (ctx, next) => {
       }
     })
 })
+
 router.post('/findNoteListByType', async (ctx, next) => {
   var note_type = ctx.request.body.note_type
   await userService.findNoteListByType(note_type)
@@ -133,4 +134,55 @@ router.post('/findNoteListByType', async (ctx, next) => {
    })
 })
 
+router.post('/findNoteDetailById', async (ctx, next) => {
+  var id = ctx.request.body.id
+  await userService.findNoteDetailById(id)
+    .then(async (res) => {
+      let r = ''
+      if(res.length) {
+        r = 'ok'
+        ctx.body = {
+          code: '800000',
+          data: res[0],
+          mess: r
+        }
+      } else {
+        r = 'error'
+        ctx.body = {
+          code: '800004',
+          data: r,
+          mess: '查找失败'
+        }
+      }
+    })
+    .catch(err => {
+      ctx.body = {
+        code: '800002',
+        data: err
+      }
+    })
+})
+
+router.post('/insertNote', async (ctx, next) => {
+  var value = [...ctx.request.body.data]
+  await userService.insertNote(value)
+    .then(res => {
+      let r = ''
+      if (res.affectedRows != 0) {
+        r = 'ok'
+        ctx.body = {
+          code: '800000',
+          data: r,
+          mess: '注册成功'
+        }
+      } else {
+        r = 'error'
+        ctx.body = {
+          code: '800004',
+          data: r,
+          mess: '注册失败'
+        }
+      }
+    })
+})
 module.exports = router
