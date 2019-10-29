@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    async function request() {
+      let res1 = await fetch('./mock.json');
+      res1 = await res1.json();
+      let res2 = await fetch('./mock.json');
+      res2 = await res2.json();
+      console.log('end');
+    }
+    console.log(request());
+
+    function autoRun(generateFunc) {
+      return new Promise((resolove, reject) => {
+        let genObj = generateFunc()
+        // 1 yield 后面即是 返回值
+        // 2 顺序保证
+        function step (arg) {
+          if (genObj.next != 'function') return
+          const obj = genObj.next(arg)
+          if (obj.done) {
+            resolove(obj.value)
+          } else {
+            // obj.value 都是 Promise
+            Promise.resolve(obj.value).then(res => {
+              return step()
+            })
+          }
+        }
+        step()
+      })
+    }
+    autoRun(request)
+  </script>
+</body>
+</html>
