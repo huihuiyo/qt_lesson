@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import WithLogin from './WithLogin'
 
-
+@WithLogin
 class UserInfo extends Component {
   render() {
     return (
