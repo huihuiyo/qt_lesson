@@ -35,7 +35,7 @@ class App extends React.Component {
             <Route exact path='/'>
               <Home />
             </Route>
-            <Route path='/topic'>
+            <Route path='/topic/:id'>
               <Topic />
             </Route>
           </Content>

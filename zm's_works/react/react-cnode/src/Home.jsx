@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Pagination, Spin } from 'antd';
-
+import { Link } from 'react-router-dom'
 import axios from './axios'
 
 const perSize = 40;
@@ -29,18 +29,24 @@ class Home extends Component {
     const {tab, limit, current } = this.state
     axios.get(`/topics?tab=${tab}&limit=${limit}&page=${current}`)
     .then((res) => {
-      console.log(res.data)
       this.setState({
-        list: res.data.data,
+        list: res.data,
         isLoading: false
       })
     })
   }
   handleChangeTab = (key) => {
     // onClick
+    // 高阶组件 复用 共同逻辑
     return (e) => {
+      // setState 是异步的
+      // 事务
+      // react setState借鉴了这个概念
+      // Promise.all()
       this.setState({
         tab: key
+      }, () => {
+        this.handleRequestList()
       })
     }
   }
@@ -48,6 +54,8 @@ class Home extends Component {
     console.log(page);
     this.setState({
       current: page,
+    }, () => {
+      this.handleRequestList()
     });
   };
   render() {
@@ -75,13 +83,15 @@ class Home extends Component {
         </ul>
         <Spin spinning={isLoading}>
           {
-            list && list.map((dis, i) => {
+            list.data && list.data.map((dis, i) => {
               return (
-                <li key={`dis${i}`}>
-                  <img src={dis.author.avatar_url} alt=""/>
-                  <span>{dis.author.loginname}</span>
-                  <h2>{dis.title}</h2>
-                </li>
+                <Link to={`/topic/${dis.id}`} key={`dis${i}`}>
+                  <li key={`dis${i}`}>
+                    <img src={dis.author.avatar_url} alt=""/>
+                    <span>{dis.author.loginname}</span>
+                    <h2>{dis.title}</h2>
+                  </li>
+                </Link>
               )
             })
           }
