@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import * as actionCreators from './store/actionCreate';
 import { CSSTransition } from 'react-transition-group';
-import { HeaderWrapper, Nav, NavItem, NavSearch, Addition, Button, Logo, SearchWrapper } from "./style";
+import { connect } from 'react-redux';
+import { 
+  HeaderWrapper,
+  Nav,
+  NavItem,
+  Addition,
+  Logo, Button,
+  SearchWrapper,
+  NavSearch
+} from './style';
+import * as actionCreators from './store/actionCreate';
 class Header extends Component {
   state = {}
   render() {
-    const { focus } = this.props
+    const { focus } = this.props;
     return (
       <HeaderWrapper>
         <Link to='/'>
@@ -22,17 +30,15 @@ class Header extends Component {
           </NavItem>
           <SearchWrapper>
             <CSSTransition
-              timeout={200}
-              in={focus}
-              classNames="slide"
+            timeout={200}
+            in={focus}
+            classNames="slide"
             >
               <NavSearch
-                onBlur={() => {
-                  this.props.handFocus()
-                }}
-                onFocus={() => {
-                  this.props.handFocus()
-              }}></NavSearch>
+              onFocus={() => {
+                this.props.handFocus()
+              }}
+              />
             </CSSTransition>
           </SearchWrapper>
         </Nav>
@@ -41,7 +47,7 @@ class Header extends Component {
             <Button className='writting'>
               <i className="iconfont">&#xe615;</i>
               写文章
-            </Button>
+						</Button>
           </Link>
           <Button className='reg'>注册</Button>
         </Addition>
@@ -56,9 +62,10 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    handFocus: () => {
+    handFocus() {
       dispatch(actionCreators.searchFocus())
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default  connect(mapStateToProps,
+   mapDispatchToProps)(Header);

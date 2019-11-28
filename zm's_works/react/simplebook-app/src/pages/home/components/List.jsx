@@ -1,23 +1,26 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { ListItem, ListInfo, LoadMore } from "../pages/home/style";
-import { actionCreators } from "../pages/home/store/index";
+import * as actionCreators from '../store/actionCreate';
+import { ListItem, ListInfo, LoadMore } from '../style';
 class List extends Component {
   state = {  }
-  render() {
-    const { list, page } = this.props
+  render() { 
+    const { list,  page } = this.props;
+    // fromJS
+    console.log(list.toJS());
     return (
       <div>
         {
           list.map((item, i) => {
             return (
-              <Link key={`item${i}`} to={ '/detail/' + item.get('id') }>
+              <Link to={'/detail/' + item.get('id')} key={`list${i}`}>
                 <ListItem>
-                  <img alt='' className='pic' src={item.get('imgUrl')} />
+                  <img alt='' className='pic'
+                  src={item.get('imgUrl')} />
                   <ListInfo>
                     <h3 className="title">
-                      { item.get('title') }
+                    { item.get('title') }
                     </h3>
                     <p className="desc">
                       { item.get('desc') }
@@ -30,26 +33,23 @@ class List extends Component {
         }
         <LoadMore onClick={() => {
           this.props.getMoreList(page)
-        }}>
-          更多文字
-        </LoadMore>
+        }}>更多文字</LoadMore>
       </div>
     );
   }
 }
-const mapStateToProps = (state) => {
-  return {
-    list: state.getIn(['home', 'articleList']),
-    page: state.getIn(['home', 'articlePage'])
-  }
-}
+const mapStateToProps = (state) => ({
+  list: state.getIn(['home', 'articleList']),
+  page: state.getIn(['home', 'articlePage'])
+})
 const mapDispatchToProps = (dispatch) => {
   return {
-    getMoreList: (page) => {
-      // action {}
-      // action Func
+    getMoreList(page) {
+      // action {} 
+      // action func
       dispatch(actionCreators.getMoreList(page))
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+export default connect(mapStateToProps,
+  mapDispatchToProps)(List);
