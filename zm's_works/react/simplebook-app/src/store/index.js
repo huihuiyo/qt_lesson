@@ -4,10 +4,12 @@ import thunk from 'redux-thunk';
 import { combineReducers } from 'redux-immutable';
 import homeReducer from '../pages/home/store/reducer';
 import headerReducer from '../common/header/store/reducer';
+import loginReducer from '../pages/login/store/reducer'
 // fromJS({ home: , detail: })
 const reducer = combineReducers({
   home: homeReducer,
-  header: headerReducer
+  header: headerReducer,
+  login: loginReducer
 })
 const store = createStore(reducer, applyMiddleware(thunk));
 

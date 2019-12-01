@@ -36,7 +36,10 @@ class Header extends Component {
             >
               <NavSearch
               onFocus={() => {
-                this.props.handFocus()
+                this.props.handFocus(true)
+              }}
+              onBlur={() => {
+                this.props.handFocus(false)
               }}
               />
             </CSSTransition>
@@ -62,8 +65,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    handFocus() {
-      dispatch(actionCreators.searchFocus())
+    handFocus(opt) {
+      dispatch(actionCreators.searchFocus(opt))
     }
   }
 }
